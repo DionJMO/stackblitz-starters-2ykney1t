@@ -31,7 +31,7 @@ window.setup = function() {
 
 window.draw = function() {
   // Clear the background
-  background(0);
+  background('#d9d9d9');
 
   // Show logo, with hue determined by frameCount
   image(img, x, y / 2, 50, 50);

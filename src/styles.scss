@@ -6,3 +6,17 @@
 // $border-radius: 1px;
 
 @import '../node_modules/bootstrap/scss/bootstrap';
+
+.navbar-custom {
+    background-color: #646363; /* Grau (Hex: #646363) */
+    border-bottom: 2px solid #000000; /* Optional: Schwarzer Rand unten */
+  }
+  
+  .navbar-custom .navbar-brand {
+    color: #ffffff; /* Weißer Text */
+  }
+  
+  .navbar-custom .btn {
+    background-color: #d9d9d9; /* Hellgraue Buttons */
+    color: #000000; /* Schwarzer Text auf den Buttons */
+  }
