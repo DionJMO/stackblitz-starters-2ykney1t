@@ -12,7 +12,7 @@ let step = 5;
 let diagonalMovement = false;
 
 window.preload = function() {
-  img = loadImage('Kurzlogo.png');
+  img = loadImage('./src/Kurzlogo.png');
 }
 
 window.setup = function() {
