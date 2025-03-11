@@ -77,6 +77,7 @@ window.keyPressed = function() {
 function updateValues() {
   x = parseInt(document.getElementById('xInput').value) || x;
   y = parseInt(document.getElementById('yInput').value) || y;
+  step = parseInt(document.getElementById('stepInput').value) || step;
   redraw(); // Zeichne das Bild neu mit den aktualisierten Werten 
 }
 
