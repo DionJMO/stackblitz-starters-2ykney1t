@@ -5,10 +5,10 @@ window.updateValues = updateValues;
 window.toggleMovement = toggleMovement;
 
 // Declare variable for the horizontal position of the circle
-let x = 315;
+let x = 365;
 let y = 25;
 let img;
-let step = 5;
+let step = 10;
 let diagonalMovement = false;
 
 window.preload = function() {
@@ -30,6 +30,9 @@ window.setup = function() {
 }
 
 window.draw = function() {
+  if(window.isToastVisible) {
+    return;
+  }
   // Clear the background
   background('#d9d9d9');
 
@@ -44,21 +47,25 @@ window.draw = function() {
     y += 5;
   }
 
+  if (!diagonalMovement && y > height + 400) {
+    y = -50; // Nur y zurücksetzen, x bleibt konstant
+  } 
+
   // Reset the circle position after it moves off the right side
   if (y > height + 400 || x > width + 400) {
     y = -50;
     x = -50;
-  }
+  } 
 
   describe('logo moving ' + (diagonalMovement ? 'diagonally' : 'vertically'));
 }
 
 window.mousePressed = function() {
   // Start/stop the animation loop
-  if (isLooping()) {
-    noLoop();
-  } else {
+  if (!isLooping()) {
     loop();
+  } else {
+    noLoop();
   }
 }
 
