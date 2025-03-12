@@ -27,11 +27,9 @@
     >
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1 text-black">Programmier Aufgabe</span>
-        <!-- <form action=""> -->
-        <button type="button" class="btn bg-info m-2" id="modalBtn">
+        <button type="button" class="btn bg-info m-2" id="modalBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <i class="bi bi-info-circle"></i>
         </button>
-        <!-- </form> -->
       </div>
     </nav>
     <div
@@ -49,7 +47,7 @@
     </div>
 
     <!-- Modal -->
-      <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+      <div class="modal fade" id="infoModal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
       <div
         class="modal-dialog modal-dialog-scrollable"
       >
