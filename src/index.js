@@ -49,10 +49,7 @@ window.draw = function() {
 
   if (!diagonalMovement && y > height + 400) { // y > height + 400
     y = - 50; // y = -50 - Nur y zurücksetzen, x bleibt konstant
-  } 
-
-  // Reset the circle position after it moves off the right side
-  if (y > height + 400 || x > width + 400) {
+  } else if (diagonalMovement && (y > height + 400 || x > width + 400)) {
     y = -50;
     x = -50;
   } 

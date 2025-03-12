@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       
       // Event-Listener für den Button
       modalTrigger.addEventListener("click", () => {
-        modalElement.show
+        modalElement.show();
       });
 
       // modal wird geschlossen → Animation fortsetzen
