@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="./src/index.js" type="module" defer></script>
-    <script src="./src/toast.js" type="module" defer></script>
+    <script src="./src/modal.js" type="module" defer></script>
   </head>
   <body>
     <nav
@@ -28,7 +28,7 @@
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1 text-black">Programmier Aufgabe</span>
         <!-- <form action=""> -->
-        <button type="button" class="btn bg-info m-2" id="toastBtn">
+        <button type="button" class="btn bg-info m-2" id="modalBtn" data-bs-toggle="modal">
           <i class="bi bi-info-circle"></i>
         </button>
         <!-- </form> -->
@@ -48,25 +48,23 @@
       </button>
     </div>
 
-    <!-- Toast Container -->
-      <div class="position-fixed top-50 start-50 translate-middle p-3">
+    <!-- Modal -->
+      <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
       <div
-        id="toastContainer"
-        class="toast w-100"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
+        class="modal-dialog modal-dialog-scrollable"
       >
-        <div class="toast-header">
-          <strong>Info: 📌 Live Programmierbeispiel</strong>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infoModalLabel">Info: 📌 Live Programmierbeispiel</h5>
           <button
             type="button"
             class="btn-close me-2 m-auto"
-            data-bs-dismiss="toast"
+            data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
         </div>
-        <div class="toast-body" id="toastBody"></div>
+        <div class="modal-body" id="modalBody"></div>
+      </div>
       </div>
     </div>
   </body>

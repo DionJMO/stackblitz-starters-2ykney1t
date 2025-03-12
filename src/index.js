@@ -5,8 +5,8 @@ window.updateValues = updateValues;
 window.toggleMovement = toggleMovement;
 
 // Declare variable for the horizontal position of the circle
-let x = 365;
-let y = 25;
+let x = 315;
+let y = 375;
 let img;
 let step = 10;
 let diagonalMovement = false;
@@ -44,11 +44,11 @@ window.draw = function() {
     y += step;
   } else {
     // Increase the x variable by 5
-    y += 5;
+    y += step;
   }
 
-  if (!diagonalMovement && y > height + 400) {
-    y = -50; // Nur y zurücksetzen, x bleibt konstant
+  if (!diagonalMovement && y > height + 400) { // y > height + 400
+    y = - 50; // y = -50 - Nur y zurücksetzen, x bleibt konstant
   } 
 
   // Reset the circle position after it moves off the right side
@@ -77,6 +77,7 @@ window.keyPressed = function() {
 function updateValues() {
   x = parseInt(document.getElementById('xInput').value) || x;
   y = parseInt(document.getElementById('yInput').value) || y;
+  step = parseInt(document.getElementById('stepInput').value) || step;
   redraw(); // Zeichne das Bild neu mit den aktualisierten Werten 
 }
 
