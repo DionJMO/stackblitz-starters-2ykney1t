@@ -1,15 +1,15 @@
 import './styles.scss';
+import { moveObject, toggleDirection, resetPosition, getDirection } from './direction.js';
 
 // Make functions available globally
 window.updateValues = updateValues;
 window.toggleMovement = toggleMovement;
 
-// Declare variable for the horizontal position of the circle
+// Declare variables for position and animation
 let x = 315;
 let y = 375;
 let img;
 let step = 10;
-let diagonalMovement = false;
 
 window.preload = function() {
   img = loadImage('./src/Kurzlogo.png');
@@ -36,25 +36,20 @@ window.draw = function() {
   // Clear the background
   background('#d9d9d9');
 
-  // Show logo, with hue determined by frameCount
+  // Show logo
   image(img, x, y / 2, 50, 50);
 
-  if (diagonalMovement) {
-    x += step;
-    y += step;
-  } else {
-    // Increase the x variable by 5
-    y += step;
-  }
+  // Bewege das Logo basierend auf der aktuellen Richtung
+  const newPosition = moveObject(x, y, step);
+  x = newPosition.x;
+  y = newPosition.y;
 
-  if (!diagonalMovement && y > height + 400) { // y > height + 400
-    y = - 50; // y = -50 - Nur y zurücksetzen, x bleibt konstant
-  } else if (diagonalMovement && (y > height + 400 || x > width + 400)) {
-    y = -50;
-    x = -50;
-  } 
+  // Überprüfe, ob die Position zurückgesetzt werden muss
+  const resetPos = resetPosition(x, y, width, height);
+  x = resetPos.x;
+  y = resetPos.y;
 
-  describe('logo moving ' + (diagonalMovement ? 'diagonally' : 'vertically'));
+  describe('logo moving ' + getDirection());
 }
 
 window.mousePressed = function() {
@@ -79,6 +74,6 @@ function updateValues() {
 }
 
 function toggleMovement() {
-  diagonalMovement = !diagonalMovement;
+  toggleDirection();
   redraw();
 }
