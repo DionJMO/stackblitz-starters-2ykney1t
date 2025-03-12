@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       
       // Event-Listener für den Button
       modalTrigger.addEventListener("click", () => {
-        //Toogle die modal-Sichtbarkeit
+        modalElement.show
+      /*   //Toogle die modal-Sichtbarkeit
       if(window.isModalVisible) {
         modal.hide();
         window.isModalVisible = false;
@@ -25,12 +26,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         modal.show()
         window.isModalVisible = true;
         noLoop();
-      }
+      } */
       });
 
       // modal wird geschlossen → Animation fortsetzen
       document.getElementById("infoModal").addEventListener("hidden.bs.modal", () => {
-        window.isModalVisible = false;
+        // window.isModalVisible = false;
         loop();
       });
 
