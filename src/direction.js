@@ -1,5 +1,5 @@
 // Standardrichtung ist vertikal
-let currentDirection = "horizontal";
+let currentDirection = "vertical";
 
 // Funktion zur Bewegung des Logos basierend auf der ausgewählten Richtung
 export function moveObject(x, y, step) {
@@ -36,22 +36,31 @@ export function toggleDirection() {
   return currentDirection;
 }
 
-// Funktion zum Zurücksetzen der Position
+// Funktion zum Zurücksetzen der Position wenn außerhalb des Bildschirms
 export function resetPosition(x, y, canvasWidth, canvasHeight) {
   let newX = x;
   let newY = y;
   
   switch (currentDirection) {
     case 'vertical':
-      if (y > canvasHeight + 400) {
+      if (y > canvasHeight + 100) {
         newY = -50;
       }
       break;
-    case 'diagonal':
     case 'horizontal':
-    case 'diagonalUp':
-      if (y > canvasHeight + 400 || x > canvasWidth + 400 || y < -400) {
+      if (x > canvasWidth + 100) {
+        newX = -50;
+      }
+      break;
+    case 'diagonal':
+      if (y > canvasHeight + 100 || x > canvasWidth + 100) {
         newY = -50;
+        newX = -50;
+      }
+      break;
+    case 'diagonalUp':
+      if (x > canvasWidth + 100 || y < -100) {
+        newY = canvasHeight + 50;
         newX = -50;
       }
       break;
@@ -63,4 +72,28 @@ export function resetPosition(x, y, canvasWidth, canvasHeight) {
 // Gibt die aktuelle Richtung zurück
 export function getDirection() {
   return currentDirection;
+}
+
+// Neue Funktion, um eine bestimmte Richtung direkt einzustellen
+export function setDirection(direction) {
+  if (['vertical', 'diagonal', 'horizontal', 'diagonalUp'].includes(direction)) {
+    currentDirection = direction;
+  }
+  return currentDirection;
+}
+
+// Neue Funktion, um die optimale Startposition basierend auf der Richtung zu erhalten
+export function getInitialPosition(canvasWidth, canvasHeight) {
+  switch (currentDirection) {
+    case 'vertical':
+      return { x: canvasWidth / 2 - 25, y: -50 }; // Mittig oben
+    case 'horizontal':
+      return { x: -50, y: canvasHeight / 2 }; // Links mittig
+    case 'diagonal':
+      return { x: -50, y: -50 }; // Oben links
+    case 'diagonalUp':
+      return { x: -50, y: canvasHeight + 50 }; // Unten links
+    default:
+      return { x: canvasWidth / 2 - 25, y: -50 }; // Standard: mittig oben
+  }
 }

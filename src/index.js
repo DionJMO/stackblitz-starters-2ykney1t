@@ -1,9 +1,17 @@
 import './styles.scss';
-import { moveObject, toggleDirection, resetPosition, getDirection } from './direction.js';
+import { 
+  moveObject, 
+  toggleDirection, 
+  resetPosition, 
+  getDirection,
+  setDirection,
+  getInitialPosition 
+} from './direction.js';
 
 // Make functions available globally
 window.updateValues = updateValues;
 window.toggleMovement = toggleMovement;
+window.setDirectionAndReset = setDirectionAndReset; // Neue globale Funktion
 
 // Declare variables for position and animation
 let x = 315;
@@ -19,11 +27,17 @@ window.setup = function() {
   // Create the canvas
   let canvas = createCanvas(720, 400);
   canvas.parent('canvas-container');
+  
   // Set the color mode to hue-saturation-brightness (HSB)
   colorMode(HSB);
 
   // Set the text size
   textSize(20);
+
+  // Setze die initiale Position basierend auf der Startrichtung
+  const initialPos = getInitialPosition(width, height);
+  x = initialPos.x;
+  y = initialPos.y;
 
   // No animation to start
   noLoop();
@@ -75,5 +89,23 @@ function updateValues() {
 
 function toggleMovement() {
   toggleDirection();
+  
+  // Setze die Position zurück auf eine gute Startposition für die neue Richtung
+  const initialPos = getInitialPosition(width, height);
+  x = initialPos.x;
+  y = initialPos.y;
+  
+  redraw();
+}
+
+// Neue Funktion zum direkten Setzen einer Richtung und Zurücksetzen der Position
+function setDirectionAndReset(direction) {
+  setDirection(direction);
+  
+  // Setze die Position zurück auf eine gute Startposition für die neue Richtung
+  const initialPos = getInitialPosition(width, height);
+  x = initialPos.x;
+  y = initialPos.y;
+  
   redraw();
 }
