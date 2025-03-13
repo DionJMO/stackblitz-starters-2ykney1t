@@ -1,5 +1,5 @@
 // Standardrichtung ist vertikal
-let currentDirection = "vertical";
+let currentDirection = "horizontal";
 
 // Funktion zur Bewegung des Logos basierend auf der ausgewählten Richtung
 export function moveObject(x, y, step) {
@@ -95,7 +95,7 @@ export function getInitialPosition(canvasWidth, canvasHeight) {
     case 'vertical':
       return { x: canvasWidth / 2 - 25, y: -50 }; // Mittig oben
     case 'horizontal':
-      return { x: -50, y: canvasHeight / 2 }; // Links mittig
+      return { x: -50, y: canvasHeight * 0.8 }; // Links mittig
     case 'diagonal':
       return { x: -50, y: -50 }; // Oben links
     case 'diagonalUp':
