@@ -7,6 +7,7 @@ import {
   setDirection,
   getInitialPosition 
 } from './direction.js';
+import { config, clearBackground } from './config.js';
 
 // Make functions available globally
 window.updateValues = updateValues;
@@ -17,7 +18,7 @@ window.setDirectionAndReset = setDirectionAndReset; // Neue globale Funktion
 let x = 315;
 let y = 375;
 let img;
-let step = 10;
+let step = config.defaultStep;
 
 window.preload = function() {
   img = loadImage('./src/Kurzlogo.png');
@@ -25,7 +26,7 @@ window.preload = function() {
 
 window.setup = function() {
   // Create the canvas
-  let canvas = createCanvas(720, 400);
+  let canvas = createCanvas(config.canvasWidth, config.canvasHeight);
   canvas.parent('canvas-container');
   
   // Set the color mode to hue-saturation-brightness (HSB)
@@ -47,11 +48,11 @@ window.draw = function() {
   if(window.isToastVisible) {
     return;
   }
-  // Clear the background
-  background('#d9d9d9');
+  // Clear the background using the external function
+  clearBackground(window);
 
   // Show logo
-  image(img, x, y / 2, 50, 50);
+  image(img, x, y / 2, config.logoWidth, config.logoHeight);
 
   // Bewege das Logo basierend auf der aktuellen Richtung
   const newPosition = moveObject(x, y, step);

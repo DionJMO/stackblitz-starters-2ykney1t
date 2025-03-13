@@ -1,5 +1,7 @@
-// Standardrichtung ist vertikal
-let currentDirection = "horizontal";
+import { config } from './config.js';
+
+// Standardrichtung aus der Konfiguration übernehmen
+let currentDirection = config.defaultDirection;
 
 // Funktion zur Bewegung des Logos basierend auf der ausgewählten Richtung
 export function moveObject(x, y, step) {
