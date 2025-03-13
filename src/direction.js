@@ -41,27 +41,34 @@ export function resetPosition(x, y, canvasWidth, canvasHeight) {
   let newX = x;
   let newY = y;
   
-  switch (currentDirection) {
+  // Großzügiger Buffer-Bereich, damit das Logo komplett verschwinden kann
+  const buffer = 350; // Erhöhe diesen Wert für mehr Platz
+  
+  switch (getDirection()) {
     case 'vertical':
-      if (y > canvasHeight + 100) {
-        newY = -50;
+      // Nur zurücksetzen, wenn weit unter dem Canvas
+      if (y > canvasHeight + buffer) {
+        newY = -buffer; // Oberhalb des Canvas starten
       }
       break;
     case 'horizontal':
-      if (x > canvasWidth + 100) {
-        newX = -50;
+      // Nur zurücksetzen, wenn weit rechts vom Canvas
+      if (x > canvasWidth + buffer) {
+        newX = -buffer; // Links vom Canvas starten
       }
       break;
     case 'diagonal':
-      if (y > canvasHeight + 100 || x > canvasWidth + 100) {
-        newY = -50;
-        newX = -50;
+      // Nur zurücksetzen, wenn weit genug vom Canvas entfernt
+      if (y > canvasHeight + buffer || x > canvasWidth + buffer) {
+        newY = -buffer;
+        newX = -buffer;
       }
       break;
     case 'diagonalUp':
-      if (x > canvasWidth + 100 || y < -100) {
-        newY = canvasHeight + 50;
-        newX = -50;
+      // Nur zurücksetzen, wenn weit genug vom Canvas entfernt
+      if (x > canvasWidth + buffer || y < -buffer) {
+        newY = canvasHeight + buffer;
+        newX = -buffer;
       }
       break;
   }
