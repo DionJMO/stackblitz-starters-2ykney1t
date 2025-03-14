@@ -69,7 +69,7 @@ export function resetPosition(x, y, canvasWidth, canvasHeight) {
     case 'diagonalUp':
       // Nur zurücksetzen, wenn weit genug vom Canvas entfernt
       if (x > canvasWidth + buffer || y < -buffer) {
-        newY = canvasHeight + buffer;
+        newY = canvasHeight + buffer * 1.8;
         newX = -buffer;
       }
       break;
@@ -101,7 +101,7 @@ export function getInitialPosition(canvasWidth, canvasHeight) {
     case 'diagonal':
       return { x: -50, y: -50 }; // Oben links
     case 'diagonalUp':
-      return { x: -50, y: canvasHeight + 50 }; // Unten links
+      return { x: -50, y: canvasHeight + 300 }; // Unten links
     default:
       return { x: canvasWidth / 2 - 25, y: -50 }; // Standard: mittig oben
   }

@@ -3,7 +3,7 @@
 // Standard-Konfiguration
 export const config = {
     // Bewegungsrichtung: 'vertical', 'diagonal', 'horizontal', 'diagonalUp'
-    defaultDirection: "diagonalUp",
+    defaultDirection: "horizontal",
     
     // Hintergrundfarbe
     backgroundColor: '#d9d9d9',
