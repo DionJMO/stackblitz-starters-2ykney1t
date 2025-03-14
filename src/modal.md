@@ -33,16 +33,19 @@ export const config = {
 }
 ```
 
-### 🎯 Hintergrund- und Darstellungseigenschaften
-Passe die visuellen Eigenschaften an:
+### 🎯 Dunkle Hintergrundfarben
+Probiere diese Grautöne für einen dunkleren Look:
 ```js
-// In config.js
+// In config.js - Wähle eine dieser Farben für backgroundColor
 export const config = {
-  backgroundColor: '#d9d9d9', // Ändere die Hintergrundfarbe
-  canvasWidth: 720,           // Breite des Canvas
-  canvasHeight: 400,          // Höhe des Canvas
-  logoWidth: 50,              // Breite des Logos
-  logoHeight: 50,             // Höhe des Logos
+  // Verschiedene Dunkelheitsgrade:
+  backgroundColor: '#2E2E2E', // 70% Schwarz
+  // oder
+  backgroundColor: '#666666', // 40% Schwarz
+  // oder
+  backgroundColor: '#999999', // 25% Schwarz
+  // oder
+  backgroundColor: '#B3B3B3', // 15% Schwarz
   ...
 }
 ```
