@@ -1,44 +1,53 @@
-
 Dies ist ein interaktives Beispiel, um zu veranschaulichen, wie man durch einfache Änderungen im Code das Verhalten einer Animation beeinflussen kann.
 
-#### 🔧 Steuerung der Animation  
+## 🔧 Steuerung der Animation  
 - **Klick auf den Canvas** → Startet oder stoppt die Animation.  
-- **Ändere die Werte für `x` und `y`** → Position des Logos anpassen.  
-- **Klick auf "Toggle Diagonal Movement"** → Wechselt zwischen vertikaler und diagonaler Bewegung.  
 - **Drücke eine Taste** → Bewegt die Animation um einen Frame weiter.  
 
-#### 🛠 Code-Anpassungen für eigenes Experimentieren  
+## 🧩 Modulare Struktur
+Dieses Projekt verwendet eine modulare Struktur:
 
-##### 🎯 Bewegungsgeschwindigkeit ändern  
-Ändere die Variable `step`, um die Geschwindigkeit des Logos anzupassen:  
+- **config.js** → Zentrale Konfigurationseinstellungen
+- **direction.js** → Bewegungslogik und Richtungssteuerung
+- **index.js** → Hauptcode mit p5.js-Integration
 
+## 🛠 Code-Anpassungen für eigenes Experimentieren  
+
+### 🎯 Bewegungsrichtung ändern
+Die Standardrichtung ist in `config.js` definiert und kann geändert werden:
 ```js
-let step = 5; // Erhöht die Bewegungsgeschwindigkeit
-```
-##### 🎯 Startposition anpassen
-Ändere die Werte von x und y, um die Anfangsposition des Logos zu ändern:
-
-```js
-let x = 315; // Logo startet weiter links
-let y = 25;  // Logo startet weiter unten
-```
-##### 🎯 Bewegungsrichtung ändern
-Passe den Code im draw()-Loop an, um beispielsweise eine horizontale Bewegung zu ermöglichen:
-
-```js
-if (diagonalMovement) {
-  x += step; // Bewegt sich nach rechts
-} else {
-  y += step; // Bewegt sich nach unten
+// In config.js
+export const config = {
+  defaultDirection: "horizontal", // Optionen: "vertical", "diagonal", "horizontal", "diagonalUp"
+  ...
 }
 ```
-💡 Tipp: Probiere verschiedene Werte aus und beobachte, wie sich das Verhalten der Animation ändert! 🚀
 
-##### Animation Controls
+### 🎯 Bewegungsgeschwindigkeit ändern  
+Die Schrittweite kann ebenfalls in der Konfiguration angepasst werden:  
+```js
+// In config.js
+export const config = {
+  defaultStep: 10, // Erhöhe den Wert für schnellere Bewegung
+  ...
+}
+```
 
-1. Klicken Sie auf eine beliebige Stelle, um die Animation zu starten/stoppen
-2. Legen Sie über die Eingabefelder eine neue Position fest
-3. Wechseln Sie zwischen vertikaler und diagonaler Bewegung
-4. Drücken Sie eine beliebige Taste, um ein Bild weiterzugehen
+### 🎯 Hintergrund- und Darstellungseigenschaften
+Passe die visuellen Eigenschaften an:
+```js
+// In config.js
+export const config = {
+  backgroundColor: '#d9d9d9', // Ändere die Hintergrundfarbe
+  canvasWidth: 720,           // Breite des Canvas
+  canvasHeight: 400,          // Höhe des Canvas
+  logoWidth: 50,              // Breite des Logos
+  logoHeight: 50,             // Höhe des Logos
+  ...
+}
+```
 
-Das Logo wird seine Position zurücksetzen, wenn es den Bildschirm verlässt.
+## 💡 Tipps
+- Probiere die verschiedenen Richtungen aus und beobachte, wie sich das Verhalten der Animation ändert!
+- Kombiniere Richtungen und Geschwindigkeiten für interessante Effekte
+- Die Position wird automatisch zurückgesetzt, wenn das Logo den Bildschirm verlässt
