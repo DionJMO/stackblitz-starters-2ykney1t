@@ -47,6 +47,13 @@ export const config = {
   // oder
   backgroundColor: '#B3B3B3', // 15% Schwarz
   ...
+  backgroundColor: '#29AEC0', // 80% Blau
+  // oder
+  backgroundColor: '#5ABCC8', // 60% Blau
+  // oder
+  backgroundColor: '#8CCDD3', // 40% Blau
+  // oder
+  backgroundColor: '#C0E5E9', // 20% Blau
 }
 ```
 

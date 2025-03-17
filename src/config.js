@@ -6,7 +6,7 @@ export const config = {
     defaultDirection: "horizontal",
     
     // Hintergrundfarbe
-    backgroundColor: '#d9d9d9',
+    backgroundColor: '#b3b3b3',
     
     // Canvas-Größe
     canvasWidth: 720,
@@ -17,7 +17,7 @@ export const config = {
     logoHeight: 50,
     
     // Standard-Schrittweite
-    defaultStep: 10
+    defaultStep: 5
   };
   
   // Hilfsfunktion zum Setzen des Hintergrunds
